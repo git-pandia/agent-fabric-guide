@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bundle the HTML, CSS, and JavaScript into one portable, offline-ready page."""
+"""Bundle the guide and weather module into one portable, offline-ready page."""
 from pathlib import Path
 import argparse
 
@@ -7,15 +7,20 @@ ROOT = Path(__file__).resolve().parent
 
 def bundle() -> str:
     html = (ROOT / "index.html").read_text(encoding="utf-8")
-    css = (ROOT / "styles.css").read_text(encoding="utf-8").rstrip("\n")
-    js = (ROOT / "app.js").read_text(encoding="utf-8").rstrip("\n")
-    css_tag = '<link rel="stylesheet" href="styles.css">'
-    js_tag = '<script src="app.js"></script>'
-    if html.count(css_tag) != 1 or html.count(js_tag) != 1:
-        raise ValueError("Expected exactly one local stylesheet and one local script tag.")
-    return html.replace(css_tag, "<style>\n" + css + "\n</style>").replace(
-        js_tag, "<script>\n" + js + "\n</script>"
+    assets = (
+        ("styles.css", '<link rel="stylesheet" href="styles.css">', "style"),
+        ("weather.css", '<link rel="stylesheet" href="weather.css">', "style"),
+        ("app.js", '<script src="app.js"></script>', "script"),
+        ("weather.js", '<script src="weather.js"></script>', "script"),
     )
+    for filename, tag, element in assets:
+        if html.count(tag) != 1:
+            raise ValueError(f"Expected exactly one asset tag for {filename}.")
+        content = (ROOT / filename).read_text(encoding="utf-8").rstrip("\n")
+        if f"</{element}" in content.lower():
+            raise ValueError(f"Unsafe closing tag in inline asset {filename}.")
+        html = html.replace(tag, f"<{element}>\n{content}\n</{element}>")
+    return html
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)

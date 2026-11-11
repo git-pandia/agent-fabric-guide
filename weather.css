@@ -1,0 +1,40 @@
+/* Weather scenario controls and its one-specialist reference layout. */
+.weather-controls{padding:13px 21px 11px;border-bottom:1px solid var(--line);background:#fafbff}
+.weather-form{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.weather-form label{display:block;min-width:0}
+.weather-location{flex:1 1 220px;max-width:420px}
+.weather-form .small-label{margin-bottom:5px}
+.weather-form input,.weather-form select,.weather-map-fields input,.weather-map-fields select{display:block;width:100%;min-height:38px;border:1px solid #dcd9e9;border-radius:8px;background:#fff;color:var(--ink);padding:8px 10px;font-size:12px}
+.weather-form input[aria-invalid="true"]{border-color:var(--danger)}
+.weather-form .weather-units{flex:0 0 145px}
+.weather-form .weather-run{min-height:38px;font-size:12px;padding:9px 14px;display:inline-flex;align-items:center;gap:7px}
+.weather-form .weather-map-btn{min-height:38px;font-size:12px;padding:8px 12px;margin-left:auto}
+.weather-form .icon{width:16px;height:16px}
+.weather-disclaimer{display:flex;align-items:flex-start;gap:9px;margin-top:10px;color:var(--muted);font-size:10px;line-height:1.55}
+.weather-sample-tag{flex-shrink:0;font-size:8px;letter-spacing:1px;font-weight:750;padding:2px 6px;border-radius:4px;color:var(--purple-dark);background:var(--purple-soft)}
+.weather-error{font-size:12px;color:#9b3040;margin-top:9px}
+.weather-graph-note{position:absolute;left:17px;top:277px;max-width:760px;font-size:10px;letter-spacing:.12px;color:var(--muted)}
+.weather-provider{padding:7px 10px!important;text-align:left;justify-content:center;background:#f7f9fc!important;border-color:#dce3ee!important}
+.weather-provider .node-label{font-size:12px!important;white-space:normal!important;line-height:1.1!important;overflow-wrap:anywhere}
+.weather-provider .node-desc{font-size:8px!important;margin-top:3px!important;color:var(--muted)!important}
+.weather-story #node-broker .node-label,.weather-story #node-agentA .node-label,.weather-story #node-toolA .node-label{white-space:normal;overflow-wrap:anywhere;line-height:1.13;font-size:14px}
+.weather-story #node-broker .node-label{font-size:17px}
+.weather-story #toolA-desc{white-space:normal;overflow-wrap:anywhere;line-height:1.12;max-height:32px;overflow:auto}
+.weather-story #node-toolA{padding:8px 10px;height:90px!important;top:129px!important}
+.weather-story #node-toolA .node-head{margin-bottom:5px}
+.weather-story .hero{padding-top:23px;padding-bottom:20px}
+.weather-story .hero h1{font-size:clamp(29px,2.6vw,38px)}
+.weather-story #weather-api-protocol{font-size:9px}
+.weather-map-fields{display:grid;grid-template-columns:1fr 1fr;gap:13px 18px;margin-top:20px}
+.weather-map-fields label>span{display:block;font-size:11px;font-weight:650;margin-bottom:6px;color:var(--ink)}
+.weather-map-fields input,.weather-map-fields select{font-size:13px}
+.weather-privacy{font-size:11px!important;margin-top:12px!important;line-height:1.6!important}
+.weather-compare-title{margin:24px 0 10px;font-size:16px}
+.weather-compare>div{display:grid;grid-template-columns:180px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.weather-compare strong{font-size:12px;font-weight:650;overflow-wrap:anywhere}
+.weather-compare p{font-size:12px!important;line-height:1.65!important;margin:0!important}
+.weather-source-note{font-size:12px!important;margin-top:16px!important}
+.weather-source-note code{font-size:11px;overflow-wrap:anywhere}
+@media(max-width:960px){.weather-controls{order:1}.weather-form .weather-map-btn{margin-left:0}.weather-location{max-width:none}.weather-graph-note{font-size:11px}}
+@media(max-width:600px){.weather-controls{padding:13px}.weather-location{flex:1 1 165px}.weather-form .weather-units{flex:0 0 128px}.weather-form .weather-run,.weather-form .weather-map-btn{flex:1;justify-content:center}.weather-disclaimer{font-size:10px}.weather-map-fields{grid-template-columns:1fr}.weather-compare>div{grid-template-columns:1fr;gap:5px}.weather-story .hero{padding-top:20px;padding-bottom:19px}}
+@media print{.weather-controls{display:none!important}}
