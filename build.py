@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bundle the guide and weather module into one portable, offline-ready page."""
+"""Bundle the guide, weather, and architecture modules into one portable, offline-ready page."""
 from pathlib import Path
 import argparse
 
@@ -10,8 +10,10 @@ def bundle() -> str:
     assets = (
         ("styles.css", '<link rel="stylesheet" href="styles.css">', "style"),
         ("weather.css", '<link rel="stylesheet" href="weather.css">', "style"),
+        ("architecture.css", '<link rel="stylesheet" href="architecture.css">', "style"),
         ("app.js", '<script src="app.js"></script>', "script"),
         ("weather.js", '<script src="weather.js"></script>', "script"),
+        ("architecture.js", '<script src="architecture.js"></script>', "script"),
     )
     for filename, tag, element in assets:
         if html.count(tag) != 1:

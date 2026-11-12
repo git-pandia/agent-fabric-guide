@@ -1,6 +1,6 @@
 # Agent Fabric - A connected story
 
-A customer-friendly, interactive guide to MuleSoft Agent Fabric, with animated request flows, component explanations, and four example stories.
+A customer-friendly, interactive guide to MuleSoft Agent Fabric, with animated request flows, component explanations, four example stories, and a scenario-free architecture tour.
 
 **Website:** https://git-pandia.github.io/agent-fabric-guide/
 
@@ -8,7 +8,7 @@ A customer-friendly, interactive guide to MuleSoft Agent Fabric, with animated r
 
 ## Use locally
 
-Open `index.html` in a modern browser. Keep `index.html`, `styles.css`, `app.js`, `weather.css`, and `weather.js` together. No installation, API key, account, or server is required. The guide works offline; optional documentation links require an internet connection.
+Open `index.html` in a modern browser. Keep `index.html`, `styles.css`, `app.js`, `weather.css`, `weather.js`, `architecture.css`, and `architecture.js` together. No installation, API key, account, or server is required. The guide works offline; optional documentation links require an internet connection.
 
 ## Features
 
@@ -17,6 +17,16 @@ Open `index.html` in a modern browser. Keep `index.html`, `styles.css`, `app.js`
 - Play/pause, previous/next, restart, playback speed, and a step slider.
 - Simple/Technical explanations, illustrative payloads, and an authored request log.
 - Searchable component guides, customer FAQs, official documentation, presentation mode, keyboard controls, responsive layouts, and reduced-motion support.
+
+## Overall architecture (no business example)
+
+Choose **Overall Agent Fabric architecture**, the first option in **Choose a story**. The existing default story and all four business examples are preserved. Open the tour directly with `?story=architecture`.
+
+The clickable map separates management, runtime interactions, and the build/deployment lifecycle. Its 12 chapters explain discovery/scanners, project files and publishing, deployment instances versus assets and replicas, ingress/egress, brokers, Model Proxy and LLM connections, A2A, MCP and backing systems, policies, and observability.
+
+Use **Play architecture**, Next/Previous, the slider, or **Tour outline** to navigate. Simple/Technical mode, speed, keyboard controls, reduced motion, and presentation mode are supported. The dashed direct-MCP path is optional; management capabilities are not serial request hops. There are no sample requests, fabricated payloads, or business results in this mode. The animation teaches possible call directions, not a mandatory topology or live telemetry.
+
+**Architecture tour:** https://git-pandia.github.io/agent-fabric-guide/?story=architecture
 
 ## Weather example and POC comparison
 
@@ -48,8 +58,10 @@ A city/units can be preselected using `?story=weather&city=Mumbai&units=fahrenhe
 - `app.js`: original stories, component library, and playback engine.
 - `weather.js`: isolated weather scenario, contextual explanations, and POC mapping.
 - `weather.css`: weather controls and single-specialist layout.
-- `build.py`: bundles all four CSS/JS assets into one standalone HTML file.
+- `architecture.js` and `architecture.css`: isolated architecture tour, diagram, and explanations.
+- `build.py`: bundles all six CSS/JS assets into one standalone HTML file.
 - `tests/test_weather.py`: browser checks for all four stories and the weather-specific controls.
+- `tests/test_architecture.py`: architecture tour and cross-story regression checks.
 - `.github/workflows/pages.yml`: builds and deploys pushes to `main`.
 
 ```sh
@@ -62,6 +74,7 @@ To run the browser checks, install Python Playwright and a compatible Chromium b
 
 ```sh
 python3 tests/test_weather.py
+python3 tests/test_architecture.py
 ```
 
 Set `CHROMIUM_EXECUTABLE` when using a system browser outside the usual path.

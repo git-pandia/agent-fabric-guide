@@ -24,7 +24,7 @@ with sync_playwright() as p:
     page.on("pageerror", lambda error: errors.append(str(error)))
     page.on("request", lambda request: requests.append(request.url))
     page.set_content(bundle())
-    assert page.locator("#scenario-select option").count() == 4
+    assert page.locator("#scenario-select option").count() == 5
     assert page.evaluate("state.scenario") == "order"
     page.select_option("#scenario-select", "weather")
     assert page.locator("#weather-controls").is_visible()
